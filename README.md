@@ -25,6 +25,18 @@ A dedicated Swift concurrency synchronization primitives library for the FoxTerm
 
 ## Installation
 
+### Swift Package Manager
+
+```swift
+.package(url: "https://github.com/foxterm/Sync.git", branch: "main"),
+```
+
+```swift
+.product(name: "Sync", package: "Sync"),
+```
+
+### CocoaPods
+
 ```ruby
 pod 'Sync', :git => 'https://github.com/foxterm/Sync.git'
 ```

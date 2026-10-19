@@ -25,6 +25,18 @@ FoxTerm APP 专用 Swift 并发同步原语库，基于 libetos C 层实现，�
 
 ## 安装
 
+### Swift Package Manager
+
+```swift
+.package(url: "https://github.com/foxterm/Sync.git", branch: "main"),
+```
+
+```swift
+.product(name: "Sync", package: "Sync"),
+```
+
+### CocoaPods
+
 ```ruby
 pod 'Sync', :git => 'https://github.com/foxterm/Sync.git'
 ```
