@@ -2,7 +2,7 @@
 
 FoxTerm APP 专用 Swift 并发同步原语库，基于 libetos C 层实现，提供原子操作、互斥锁、等待组及内存回收能力。
 
-> 本库为 [FoxTerm](https://foxterm.app/) APP 专用核心组件。如需使用完整功能，请下载 FoxTerm 客户端：[https://foxterm.app/](https://foxterm.app/)
+> 本库为 [FoxTerm](https://foxterm.app/) APP 专用核心组件，欢迎下载使用：[https://foxterm.app/](https://foxterm.app/)
 
 ## 模块
 
