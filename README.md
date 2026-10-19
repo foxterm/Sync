@@ -1,38 +1,40 @@
 # Sync
 
-FoxTerm APP 专用 Swift 并发同步原语库，基于 libetos C 层实现，提供原子操作、互斥锁、等待组及内存回收能力。
+[English](README.md) | [中文文档](README_CN.md)
 
-> 本库为 [FoxTerm](https://foxterm.app/) APP 专用核心组件，欢迎下载使用：[https://foxterm.app/](https://foxterm.app/)
+A dedicated Swift concurrency synchronization primitives library for the FoxTerm APP, built on top of the libetos C layer, providing atomic operations, mutex locks, wait groups, and memory reclamation capabilities.
 
-## 模块
+> This library is a dedicated core component for the [FoxTerm](https://foxterm.app/) APP. Feel free to download it: [https://foxterm.app/](https://foxterm.app/)
 
-| 文件 | 功能 |
-|------|------|
-| `Atomic.swift` | 线程安全的 64 位原子整数（add / sub / load / store） |
-| `Mutex.swift` | 互斥锁，支持 `withLock` 闭包自动加锁解锁 |
-| `WaitGroup.swift` | 等待组（类似 Go `sync.WaitGroup`），等待多个并发任务完成 |
-| `MemoryManager.swift` | 物理内存回收器，强制释放 C/C++ 动态分配的滞留内存 |
+## Modules
 
-## 环境要求
+| File | Description |
+|------|-------------|
+| `Atomic.swift` | Thread-safe 64-bit atomic integer (add / sub / load / store) |
+| `Mutex.swift` | Mutex lock with `withLock` closure for automatic lock/unlock |
+| `WaitGroup.swift` | Wait group (similar to Go `sync.WaitGroup`), waits for multiple concurrent tasks to complete |
+| `MemoryManager.swift` | Physical memory reclaimer, forcibly releases stale memory dynamically allocated by C/C++ |
 
-| 平台 | 最低版本 |
-|------|---------|
-| iOS  | 17.0    |
-| macOS | 14.0   |
-| Swift | 5.10   |
+## Requirements
 
-## 安装
+| Platform | Minimum Version |
+|----------|----------------|
+| iOS      | 17.0           |
+| macOS    | 14.0           |
+| Swift    | 5.10           |
+
+## Installation
 
 ```ruby
 pod 'Sync', :git => 'https://github.com/foxterm/Sync.git'
 ```
 
-### 依赖
+### Dependencies
 
-- [libetos](https://github.com/foxterm/libetos) — 底层 C 同步原语
-- [Extension](https://github.com/foxterm/Extension) — Foundation 扩展
+- [libetos](https://github.com/foxterm/libetos) — Low-level C synchronization primitives
+- [Extension](https://github.com/foxterm/Extension) — Foundation extensions
 
-## 使用
+## Usage
 
 ### Atomic
 
@@ -50,18 +52,18 @@ counter.store(100)
 ```swift
 let mutex = Mutex()
 
-// 自动加锁解锁
+// Automatic lock/unlock
 let result = mutex.withLock {
-    // 临界区
+    // Critical section
     return someValue
 }
 
-// 无返回值
+// No return value
 mutex.withVoid {
-    // 临界区
+    // Critical section
 }
 
-// 手动控制
+// Manual control
 mutex.lock()
 defer { mutex.unlock() }
 ```
@@ -74,21 +76,21 @@ let wg = WaitGroup()
 wg.add(3)
 Task {
     defer { wg.done() }
-    // 任务 1
+    // Task 1
 }
 Task {
     defer { wg.done() }
-    // 任务 2
+    // Task 2
 }
 Task {
     defer { wg.done() }
-    // 任务 3
+    // Task 3
 }
-wg.wait() // 阻塞等待全部完成
+wg.wait() // Blocks until all tasks complete
 
-// 便捷闭包方式（自动 add/done）
+// Convenience closure (automatic add/done)
 wg.with {
-    // 任务
+    // Task
 }
 ```
 
@@ -98,6 +100,6 @@ wg.with {
 MemoryManager.shared.purge()
 ```
 
-## 许可证
+## License
 
 MIT
