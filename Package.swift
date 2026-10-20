@@ -18,7 +18,10 @@ let package = Package(
     targets: [
         .target(
             name: "Sync",
-            dependencies: ["libetos", "Extension"]
+            dependencies: [
+                .product(name: "libetos", package: "libetos"),
+                .product(name: "Extension", package: "Extension"),
+            ]
         ),
     ]
 )
