@@ -12,8 +12,8 @@ let package = Package(
         .library(name: "Sync", targets: ["Sync"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/foxterm/libetos.git", from: "1.0.9"),
-        .package(url: "https://github.com/foxterm/Extension.git", from: "1.0.9"),
+        .package(url: "https://github.com/foxterm/libetos.git", from: "1.0.1"),
+        .package(url: "https://github.com/foxterm/Extension.git", from: "1.0.1"),
     ],
     targets: [
         .target(
